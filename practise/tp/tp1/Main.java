@@ -5,8 +5,8 @@ public class Main
 	boolean continuer = true;
 	try
 	    {
-		Polygone2 poly = new Polygone2();
-		for(int i=0; continuer; ++i)
+		Polygone4 poly = new Polygone4();
+		for(int i=0; continuer && (poly.getNbElement() < poly.getTaille()); ++i)
 		    {
 			try
 			    {
@@ -23,7 +23,6 @@ public class Main
 		    {
 			try
 			    {
-				System.out.println(poly.getPoints()[i].toString());
 				poly.enlever(i);
 			    }
 			catch(ArrayIndexOutOfBoundsException e)
@@ -31,6 +30,10 @@ public class Main
 				System.out.println("Out of index <!");
 				continuer = false;
 			    }
+			catch(IndexOutOfBoundsException e){
+			    System.out.println("Out of index <!");
+			    continuer = false;
+			}
 		    }
 	    }
 	catch(NegativeArraySizeException e)

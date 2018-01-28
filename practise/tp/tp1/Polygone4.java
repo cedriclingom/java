@@ -1,20 +1,21 @@
-import java.util.Vector;
+import java.util.List;
+import java.util.LinkedList;
 
-    
-class Polygone2
-{
-    private Vector<Point> points;
+
+class Polygone4{
+
+    private List<Point> points;
     private int taille;
     private int nbElement;
-
-
-    public Polygone2()
+    
+    
+    public Polygone4()
     {
 	try
 	    {
 		this.nbElement = 0;
 		this.taille = 10;
-		this.points = new Vector<Point>(10);
+		this.points = new LinkedList<Point>();
 	    }
 	catch(NullPointerException e)
 	    {
@@ -22,13 +23,13 @@ class Polygone2
 	    }
     }
 
-    public Polygone2(int inTaille)
+    public Polygone4(int inTaille)
     {
 	try
 	    {
 		this.nbElement = 0;
 		this.taille = inTaille;
-		this.points = new Vector<Point>(inTaille);
+		this.points = new LinkedList<Point>();
 	    }
 	catch(NegativeArraySizeException e)
 	    {
@@ -40,7 +41,7 @@ class Polygone2
 	    }
     }
 
-    public Vector<Point> getPoints()
+    public List<Point> getPoints()
     {
 	return this.points;
     }
@@ -58,7 +59,7 @@ class Polygone2
 	try
 	    {
 		++nbElement;
-		this.points.addElement(p);
+		this.points.add(p);
 	    }
 	catch(ArrayIndexOutOfBoundsException e)
 	    {
@@ -70,10 +71,14 @@ class Polygone2
     {
 	try{
 	    System.out.println(this.points.remove(indice).toString());
-	    }catch(ArrayIndexOutOfBoundsException e)
-	    {
+	}
+	catch(ArrayIndexOutOfBoundsException e){
 		System.out.println("Tous les points sont déjà enlevés!");
 		throw e;
-	    }
+	}
+	catch(IndexOutOfBoundsException e){
+	    System.out.println("Tous les points sont déjà enlevés!");
+	    throw e;
+	}
     }
 }

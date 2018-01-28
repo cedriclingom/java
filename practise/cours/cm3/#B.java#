@@ -1,0 +1,5 @@
+public class B{
+    static void methode1(A a){
+	a = new A(2);
+    }
+    static void
